@@ -11,51 +11,52 @@ def login():
     driver = webdriver.Firefox(executable_path=executable_path)
     driver.set_page_load_timeout(10)
 
-    driver.get("https://message.sufeikeji.com/login/index")  #登录
+    driver.get("http://localhost/login/index")  #登录
 
-    driver.find_element_by_name('LoginForm[account]').send_keys('')  #用户名
-    driver.find_element_by_name('LoginForm[password]').send_keys('') #密码
-
+    driver.find_element_by_name('LoginForm[username]').send_keys('liuming')  #用户名
+    #time.sleep(1)
+    driver.find_element_by_name('LoginForm[password]').send_keys('xxxx') #密码
+    driver.find_element_by_name("login-button").click()
     time.sleep(1)
 
-    driver.find_element_by_xpath('//button[@class="btn btn-primary block full-width m-b"]').click()  #提交按钮
+    driver.get("http://localhost/site/organization")  # 机构
+    # time.sleep(8)
+    #
+    # driver.get("http://localhost/site/company")  # 公司
+    # time.sleep(4)
+    #
+    # driver.get("http://localhost/site/event")  # 事件
+    # time.sleep(4)
+    #
+    # driver.get("http://localhost/site/member")  # 成员
+    # time.sleep(4)
+    #
+    # driver.get("http://localhost/site/export")  # 导出
+    # time.sleep(2)
+    #
+    # driver.get("http://localhost/site/craw")  # 数据
+    # time.sleep(2)
+    #
+    # driver.get("http://localhost/site/organization")  # 机构
+    # time.sleep(2)
+
+    driver.find_element_by_id('qt_name').send_keys('国开金诚')
+    driver.find_element_by_id('qt_btn_search').click()
+
     time.sleep(1)
+    driver.find_element_by_id('it_name').send_keys('中植资本')
+    driver.find_element_by_id('it_btn_search').click()
 
-    # 信息不准确页面
-    driver.get("http://test1.phoenixtree.com.cn/inaccurate-info")
-
-    time.sleep(2)
-    
-    driver.find_element_by_name('sekProject').send_keys('捷翔饮品')
-    driver.find_element_by_xpath('//a[@class="easyui-linkbutton l-btn l-btn-small"]').click() #提交按钮
-
-    time.sleep(2)
-
-    driver.find_element_by_name('sekOrg').send_keys('君联资本')
-    driver.find_element_by_xpath('//a[@class="easyui-linkbutton l-btn l-btn-small"]').click()
-
-    driver.execute_script('$("#sekBath").combobox("setValue",1)') #赋值easy_ui 界面combobox框值
     time.sleep(1)
-    driver.find_element_by_xpath('//a[@class="easyui-linkbutton l-btn l-btn-small"]').click()
+    driver.find_element_by_name("add_start_time").send_keys('2018-01-26')
+    driver.find_element_by_id('it_btn_search').click()
 
-    time.sleep(4)
-    driver.execute_script('$("#sekBath").combobox("setValue",2)')
-    time.sleep(1)
-    driver.find_element_by_xpath('//a[@class="easyui-linkbutton l-btn l-btn-small"]').click()
-
-    driver.find_element_by_name('sekProject').clear()  #清除input框里面的内容
-    driver.find_element_by_name('sekOrg').clear()
-
-    time.sleep(2)
-    driver.execute_script('$("#sekBath").combobox("setValue",1)')
-    time.sleep(2)
-    driver.find_element_by_name('sekStime').send_keys('2018-01-01')
-    driver.find_element_by_xpath('//a[@class="easyui-linkbutton l-btn l-btn-small"]').click()
-
-    time.sleep(4)
-    driver.find_element_by_name('sekEtime').send_keys('2018-01-02')
-    driver.find_element_by_xpath('//a[@class="easyui-linkbutton l-btn l-btn-small"]').click()
-
+    driver.find_element_by_id('it_name').clear()
+    driver.find_element_by_name("add_start_time").clear()
+    time.sleep(3)
+    driver.find_element_by_name("add_start_time").send_keys('2018-01-22')
+    driver.find_element_by_name("add_end_time").send_keys('2018-01-23')
+    driver.find_element_by_id('it_btn_search').click()
 
 if __name__ == '__main__':
 
